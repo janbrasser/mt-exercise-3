@@ -11,33 +11,33 @@ tools=$base/tools
 
 # link default training data for easier access
 
-mkdir -p $data/wikitext-2
+mkdir -p $data/joyce
 
 for corpus in train valid test; do
-    absolute_path=$(realpath $tools/pytorch-examples/word_language_model/data/wikitext-2/$corpus.txt)
-    ln -snf $absolute_path $data/wikitext-2/$corpus.txt
+    absolute_path=$(realpath $tools/pytorch-examples/word_language_model/data/moby_dick/$corpus.txt)
+    ln -snf $absolute_path $data/moby_dick/$corpus.txt
 done
 
 # download a different interesting data set!
 
-mkdir -p $data/grimm
+mkdir -p $data/moby_dick
 
-mkdir -p $data/grimm/raw
+mkdir -p $data/moby_dick/raw
 
-wget https://www.gutenberg.org/files/52521/52521-0.txt
-mv 52521-0.txt $data/grimm/raw/tales.txt
+wget https://www.gutenberg.org/files/2701/2701-0.txt
+mv 2701-0.txt $data/moby_dick/raw/moby_dick.txt
 
 # preprocess slightly
 
-cat $data/grimm/raw/tales.txt | python $base/scripts/preprocess_raw.py > $data/grimm/raw/tales.cleaned.txt
+cat $data/moby_dick/raw/moby_dick.txt | python $base/scripts/preprocess_raw.py > $data/moby_dick/raw/moby_dick.cleaned.txt
 
 # tokenize, fix vocabulary upper bound
 
-cat $data/grimm/raw/tales.cleaned.txt | python $base/scripts/preprocess.py --vocab-size 5000 --tokenize --lang "en" --sent-tokenize > \
-    $data/grimm/raw/tales.preprocessed.txt
+cat $data/moby_dick/raw/moby_dick.cleaned.txt | python $base/scripts/preprocess.py --vocab-size 5000 --tokenize --lang "en" --sent-tokenize > \
+    $data/moby_dick/raw/moby_dick.preprocessed.txt
 
 # split into train, valid and test
 
-head -n 440 $data/grimm/raw/tales.preprocessed.txt | tail -n 400 > $data/grimm/valid.txt
-head -n 840 $data/grimm/raw/tales.preprocessed.txt | tail -n 400 > $data/grimm/test.txt
-tail -n 3075 $data/grimm/raw/tales.preprocessed.txt | head -n 2955 > $data/grimm/train.txt
+head -n 1186 $data/moby_dick/raw/moby_dick.preprocessed.txt | tail -n 726 > $data/moby_dick/valid.txt
+head -n 1912 $data/moby_dick/raw/moby_dick.preprocessed.txt | tail -n 726 > $data/moby_dick/test.txt
+tail -n 7268 $data/moby_dick/raw/moby_dick.preprocessed.txt > $data/moby_dick/train.txt

@@ -19,7 +19,7 @@ SECONDS=0
         --epochs 40 \
         --log-interval 100 \
         --emsize 200 --nhid 200 --dropout 0.7 --tied \
-        --save $models/model.pt
+        --save $models/model_7.pt
 )
 
 echo "time taken:"

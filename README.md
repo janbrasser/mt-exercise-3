@@ -35,6 +35,11 @@ Train a model with a training script. The script are numbered by their respectiv
 
     ./scripts/train_3.sh
 
+If the perplexities should be extracted from the training output, save it into a file in the training_output directory (manually or by redirecting it) and run get_perplexity.py (required pandas):
+
+	./scripts/train_3.sh > training_output/my_output_file.txt
+	python3 get_perplexity.py
+
 The training process can be interrupted at any time, and the best checkpoint will always be saved.
 
 Generate (sample) some text from a trained model with:

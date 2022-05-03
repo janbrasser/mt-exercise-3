@@ -31,7 +31,7 @@ Download and preprocess data:
 
     ./scripts/download_data.sh
 
-Train a model with a training script. The script are numbered by their respective dropout rate times 10, so for example, train_3.sh trains with a dropout of 0.3:
+Train a model with a training script. The script are numbered by their respective dropout rate times 10, so, for example, train_3.sh trains with a dropout of 0.3:
 
     ./scripts/train_3.sh
 
@@ -43,11 +43,11 @@ Generate (sample) some text from a trained model with:
 	
 # Changelog
 
-download_data.sh changed to now download the book "Moby dick" Herman Melville from project Gutenberg. 
-This fits the size requirements nicely (9181 lines in preprocessed file, with first 460 dropped later, since they are not part of the book)
+download_data.sh changed to now download the book "Moby Dick" Herman Melville from project Gutenberg. 
+This fits the size requirements nicely (9181 lines in preprocessed file, with first 460 dropped later, since they are not part of the book itself)
 Also adjusted file paths and process of splitting the data.
 
 Adjusted the training file according to the new file paths and derived six training scripts with different dropout settings.
 
-Udjusted the generation script by updating file paths and increasing the number of generated words to 200
+Adjusted the generation script by updating file paths and increasing the number of generated words to 200
 

@@ -35,6 +35,11 @@ Train a model with a training script. The script are numbered by their respectiv
 
     ./scripts/train_3.sh
 
+If perplexities should be extracted, redirect the training output to a file in the training_output directory and then run get_perplexity.py (requires pandas):
+    
+    ./scripts/train_3.sh > training_output/my_output_file.txt
+    python3 get_perplexity.py
+
 The training process can be interrupted at any time, and the best checkpoint will always be saved.
 
 Generate (sample) some text from a trained model with:
@@ -50,4 +55,6 @@ Also adjusted file paths and process of splitting the data.
 Adjusted the training file according to the new file paths and derived six training scripts with different dropout settings.
 
 Adjusted the generation script by updating file paths and increasing the number of generated words to 200
+
+Added python script to produce csv files containing complexities from the training script output.
 
